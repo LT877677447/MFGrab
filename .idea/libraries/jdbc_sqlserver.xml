@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jdbc_sqlserver">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib/jdbc_sqlserver" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib/jdbc_sqlserver" recursive="false" />
+  </library>
+</component>

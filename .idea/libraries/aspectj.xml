@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="aspectj">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib/aspectj" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib/aspectj" recursive="false" />
+  </library>
+</component>

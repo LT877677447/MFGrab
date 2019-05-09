@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="MFGrab">
+    <output-path>$PROJECT_DIR$/out/artifacts/MFGrab</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="MFGrab/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="MFGrab" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="aop" />
+          <element id="library" level="project" name="aspectj" />
+          <element id="library" level="project" name="c3p0" />
+          <element id="library" level="project" name="fastjson" />
+          <element id="library" level="project" name="jdbc_sqlserver" />
+          <element id="library" level="project" name="JSTL" />
+          <element id="library" level="project" name="log4j" />
+          <element id="library" level="project" name="Mybatis" />
+          <element id="library" level="project" name="org" />
+          <element id="library" level="project" name="other" />
+          <element id="library" level="project" name="Spring" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

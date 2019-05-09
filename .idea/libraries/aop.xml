@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="aop">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib/aop" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib/aop" recursive="false" />
+  </library>
+</component>
