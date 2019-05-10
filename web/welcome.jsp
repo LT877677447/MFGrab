@@ -1,3 +1,4 @@
+<%--suppress ALL --%>
 <%--suppress XmlPathReference --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -117,10 +118,10 @@
                 async:true,
                 success: function (data) {
                     var res = data.res;
-                    if (res.toString() == "exist") {
-                        window.location.href = "<c:url value="/index/index"/>";AdvtaskInfoController
+                    if (res.toString() === "exist") {
+                        window.location.href = "<c:url value="/index/index"/>";
                     }
-                    if (res.toString() == "not exist") {
+                    if (res.toString() === "not exist") {
                         $("#comment_pass").text("账号不存在");
                     }
                 },

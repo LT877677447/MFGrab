@@ -28,7 +28,6 @@
     <orderEntry type="library" name="JSTL" level="project" />
     <orderEntry type="library" name="log4j" level="project" />
     <orderEntry type="library" name="Mybatis" level="project" />
-    <orderEntry type="library" name="org" level="project" />
     <orderEntry type="library" name="other" level="project" />
     <orderEntry type="library" name="Spring" level="project" />
     <orderEntry type="module-library">
@@ -41,5 +40,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org" level="project" />
   </component>
 </module>

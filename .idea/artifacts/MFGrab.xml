@@ -16,9 +16,9 @@
           <element id="library" level="project" name="JSTL" />
           <element id="library" level="project" name="log4j" />
           <element id="library" level="project" name="Mybatis" />
-          <element id="library" level="project" name="org" />
           <element id="library" level="project" name="other" />
           <element id="library" level="project" name="Spring" />
+          <element id="library" level="project" name="org" />
         </element>
       </element>
     </root>

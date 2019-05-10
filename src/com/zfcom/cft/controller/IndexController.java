@@ -40,7 +40,6 @@ public class IndexController {
             map.put("res", "not exist");
             return map;
         }
-
         request.getSession().setAttribute("user", resUser);
         map.put("res", "exist");
         return map;
