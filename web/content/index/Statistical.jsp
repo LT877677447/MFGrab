@@ -71,10 +71,10 @@
                         <tr>
                             <th class="table-date">渠道编号</th>
                             <th class="table-date">渠道名</th>
-                            <th class="table-date am-hide-sm-only">活跃</th>
-                            <th class="table-date am-hide-sm-only">新增</th>
-                            <th class="table-date am-hide-sm-only">留存</th>
-                            <th class="table-date am-hide-sm-only">日期</th>
+                            <th class="table-date ">活跃</th>
+                            <th class="table-date ">新增</th>
+                            <th class="table-date ">留存</th>
+                            <th class="table-date ">日期</th>
                         </tr>
                         </thead>
                         <tbody id="content_table">

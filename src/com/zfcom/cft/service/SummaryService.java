@@ -1,6 +1,6 @@
 package com.zfcom.cft.service;
 
-import com.zfcom.cft.entity.Mofang;
+import com.zfcom.cft.entity.po.Mofang;
 import com.zfcom.cft.bo.MofangStatistical;
 import com.zfcom.cft.utils.PageModel;
 
@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface SummaryService {
 
-    List<Mofang> getMofangByChannel(Integer no);
 
     List<Mofang> getAllChannelLatest();
 

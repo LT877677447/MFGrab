@@ -63,8 +63,8 @@
                         <tr>
                             <th class="table-date">渠道编号</th>
                             <th class="table-date">渠道名</th>
-                            <th class="table-date am-hide-sm-only">月活</th>
-                            <th class="table-date am-hide-sm-only">月份</th>
+                            <th class="table-date">月活</th>
+                            <th class="table-date">月份</th>
                         </tr>
                         </thead>
                         <tbody id="content_table">
@@ -79,11 +79,17 @@
                                         <c:if test="${rs.sup_objectNo == 628}">xiaomi</c:if>
                                         <c:if test="${rs.sup_objectNo == 629}">qq</c:if>
                                     </td>
+
                                     <td>${rs.numberOfMonthLive}</td>
                                     <td>${requestScope.map.Month}月份</td>
                                 </tr>
                             </c:forEach>
-                            <tr class="am-active"><td>共计</td><td>/</td><td>${requestScope.map.total}</td><td>${requestScope.map.Month}月份</td></tr>
+                            <tr class="am-active">
+                                <td>共计</td>
+                                <td>/</td>
+                                <td>${requestScope.map.total}</td>
+                                <td>${requestScope.map.Month}月份</td>
+                            </tr>
 
                         </tbody>
                     </table>
@@ -127,6 +133,11 @@
         $("#btn_search").on('click',function () {
             queryWithChannelAndDate();
         });
+        // 2月	27156
+        // 3月	109909
+        // 4月	297429
+        // 5月	450000
+        // 月活	884494
 
         function queryWithChannelAndDate() {
             var month = $("#MonthToShow").val();

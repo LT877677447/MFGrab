@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress SpringXmlModelInspection -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -23,11 +24,36 @@
     <!-- 扫描org.fkit包下面的java文件，有Spring的相关注解的类，则把这些类注册为Spring的bean -->
     <context:component-scan base-package="com.zfcom.cft"/>
 
-    <!-- 使用PropertyOverrideConfigurer后处理器加载数据源参数 -->
-    <context:property-override location="classpath:db.properties"/>
+    <!-- 配置dbcp数据源 -->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 
-    <!-- 配置c3p0数据源 -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mysql?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/MFGrab?useUnicode=true&amp;characterEncoding=UTF-8"/>-->
+        <!--<property name="username" value="MFGrab"/>-->
+        <!--<property name="password" value="MFGrab123456"/>-->
+
+         <!--默认值是 0, 连接池创建连接的初始连接数目-->
+        <property name="initialSize" value="2"/>
+        <!-- 默认是 0, 连接数中最小空闲连接数 -->
+        <property name="minIdle" value="2"/>
+        <!-- 默认值是 8, 连接池中同时可以分派的最大活跃连接数 -->
+        <property name="maxTotal" value="20"/>
+        <!-- 默认是 8 ，连接池中最大空闲连接数 -->
+        <property name="maxIdle" value="5"/>
+        <!-- 默认值是无限大，当连接池中连接已经用完了，等待建立一个新连接的最大毫秒数 ( 在抛异常之前 ) -->
+        <property name="maxWaitMillis" value="60000"/>
+        <!-- 默认值是 false, 是否清理 removeAbandonedTimeout 秒没有使用的活动连接 , 清理后并没有放回连接池 -->
+        <property name="removeAbandonedOnBorrow" value="true"/>
+        <property name="removeAbandonedOnMaintenance" value="true"/>
+        <!--  默认值是 300( 秒 ), 活动连接的最大空闲时间 -->
+        <property name="removeAbandonedTimeout" value="180"/>
+    </bean>
+
 
     <!-- 配置SqlSessionFactory，org.mybatis.spring.SqlSessionFactoryBean是Mybatis社区开发用于整合Spring的bean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"

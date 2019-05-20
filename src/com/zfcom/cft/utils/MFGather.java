@@ -2,7 +2,9 @@ package com.zfcom.cft.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.Test;
+import org.springframework.web.context.ContextLoaderListener;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -14,14 +16,14 @@ import java.util.Date;
 
 @SuppressWarnings("Duplicates")
 public class MFGather {
+    public static BasicDataSource dataSource = (BasicDataSource) ContextLoaderListener.getCurrentWebApplicationContext().getBean ("dataSource");
 
-    public String officalSite = "mofangapp.com:3002";
-    public String username = "@lin888888";
-    public String password = "1902213295";
+    public String username = "username";//登录 用户名
+    public String password = "password";//密码
 
-    public String loginURL = "http://v1-login.v1.mofangapp.com/1/login";
-    public String allTasksURL = "http://lin888888.v1.mofangapp.com/1/classes/Task";
-    public String taskDetailURL = "http://lin888888.v1.mofangapp.com/1/classes/RetentionBak";
+    public String loginURL = "http://XXXXXXXXXX/X/login";
+    public String allTasksURL = "http://XXXXXXXXX/X/XXX/Task";
+    public String taskDetailURL = "http://XXXXXXX/X/XXXX/RetentionBak";
 
     public JSONObject loginResponse = null;
     public JSONObject allTasksResponse = null;
@@ -123,8 +125,8 @@ public class MFGather {
     private static Map<String, Object> getHeaders() {
         Map<String, Object> headers = new HashMap<String, Object>();
         headers.put("Content-Type", "text/plain");
-        headers.put("Origin", "http://mofangapp.com:3002");
-        headers.put("Referer", "http://mofangapp.com:3002");
+        headers.put("Origin", "http://XXXXXXX:3002");
+        headers.put("Referer", "http://XXXXXXX:3002");
         headers.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36");
         return headers;
     }
@@ -197,23 +199,20 @@ public class MFGather {
     }
 
     public static void refresh(){
-        System.out.println("!!!!!!start!!!!!!");
-        System.out.println("!!!!!!start!!!!!!");
-        System.out.println("!!!!!!start!!!!!!");
-
         boolean refreshed = refreshed();
         if(!refreshed)
             MFGather.main(null);
 
         Calendar c = Calendar.getInstance();
         c.set(Calendar.DAY_OF_MONTH,c.get(Calendar.DAY_OF_MONTH)+1);
-        c.set(Calendar.HOUR_OF_DAY,0);
+        //每天 5点抓一次，
+        c.set(Calendar.HOUR_OF_DAY,5);
         c.set(Calendar.MINUTE,0);
         c.set(Calendar.SECOND,0);
 
 
         Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 MFGather.main(null);
@@ -239,13 +238,12 @@ public class MFGather {
     }
 
     public static boolean refreshed(){
-        String sql = "select COUNT(*) from yun.dbo.tb_mofang\n" +
-                "  where DATEDIFF(D,date_grab,GETDATE()) = 0";
+        String sql = "select COUNT(*) from "+Constants.TABLE_Mofang+" where DATEDIFF(DATE_FORMAT(date_grab,'%Y-%m-%d'),CURDATE())=0";
         Connection connection = null;
         PreparedStatement ps = null;
         boolean refreshed = false;
         try{
-            connection = DBCPUtil.getConnection();
+            connection = dataSource.getConnection();
             ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -264,13 +262,12 @@ public class MFGather {
         }
         return refreshed;
     }
-
     public static void newMoFang(int sup_objectNo, String sup_objectId, int twologincount, int newcount, int dayreten, String objectId, Date date_origin, Date date_grab) {
-        String sql = "insert into [yun].[dbo].[tb_mofang](sup_objectNo,sup_objectId,twologincount,newcount,dayreten,objectId,date_origin,date_grab) values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into "+Constants.TABLE_Mofang+" (sup_objectNo,sup_objectId,twologincount,newcount,dayreten,objectId,date_origin,date_grab) values(?,?,?,?,?,?,?,?)";
         Connection connection = null;
         PreparedStatement ps = null;
         try {
-            connection = DBCPUtil.getConnection();
+            connection = dataSource.getConnection();
             ps = connection.prepareStatement(sql);
             System.out.println("::::::::ps" + ps);
 

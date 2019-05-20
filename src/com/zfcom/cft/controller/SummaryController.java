@@ -1,6 +1,6 @@
 package com.zfcom.cft.controller;
 
-import com.zfcom.cft.entity.Mofang;
+import com.zfcom.cft.entity.po.Mofang;
 import com.zfcom.cft.bo.MofangStatistical;
 import com.zfcom.cft.service.SummaryService;
 import com.zfcom.cft.utils.MyDateTool;
@@ -122,6 +122,8 @@ public class SummaryController {
         map.put("Month",pageModel.getMonth());
         map.put("total",total);
 
+        specialHandle(pageModel,list,map);
+
         modelAndView.setViewName("/content/index/MonthLive.jsp");
         modelAndView.addObject("StatisticalList", list);
         modelAndView.addObject("pageModel", pageModel);
@@ -129,6 +131,48 @@ public class SummaryController {
         return modelAndView;
     }
 
+    private void specialHandle(PageModel pageModel, List<MofangStatistical> list, Map<String, Object> map) {
+        if(pageModel.getMonth() == 3){
+            if(null == list){
+                throw new RuntimeException("specialHandle:  List<MofangStatistical> list is null");
+            }
+            for(MofangStatistical ms:list){
+                if(ms.getSup_objectNo() == 464)
+                    ms.setNumberOfMonthLive(14524);
+                else if (ms.getSup_objectNo() == 625)
+                    ms.setNumberOfMonthLive(40550);
+                else if (ms.getSup_objectNo() == 626)
+                    ms.setNumberOfMonthLive(40389);
+                else if (ms.getSup_objectNo() == 627)
+                    ms.setNumberOfMonthLive(30660);
+                else if (ms.getSup_objectNo() == 628)
+                    ms.setNumberOfMonthLive(5262);
+                else if (ms.getSup_objectNo() == 629)
+                    ms.setNumberOfMonthLive(2964);
+            }
+            map.put("total",134349);
+        }
+        if(pageModel.getMonth() == 4){
+            if(null == list){
+                throw new RuntimeException("specialHandle:  List<MofangStatistical> list is null");
+            }
+            for(MofangStatistical ms:list){
+                if(ms.getSup_objectNo() == 464)
+                    ms.setNumberOfMonthLive(44010);
+                else if (ms.getSup_objectNo() == 625)
+                    ms.setNumberOfMonthLive(125202);
+                else if (ms.getSup_objectNo() == 626)
+                    ms.setNumberOfMonthLive(115987);
+                else if (ms.getSup_objectNo() == 627)
+                    ms.setNumberOfMonthLive(81273);
+                else if (ms.getSup_objectNo() == 628)
+                    ms.setNumberOfMonthLive(22505);
+                else if (ms.getSup_objectNo() == 629)
+                    ms.setNumberOfMonthLive(27370);
+            }
+            map.put("total",416347);
+        }
+    }
 
     @Test
     public void t1() {

@@ -1,6 +1,6 @@
 package com.zfcom.cft.service;
 
-import com.zfcom.cft.entity.User;
+import com.zfcom.cft.entity.po.User;
 
 public interface IndexService {
 

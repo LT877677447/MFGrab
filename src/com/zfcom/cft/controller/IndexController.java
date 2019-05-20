@@ -1,6 +1,6 @@
 package com.zfcom.cft.controller;
 
-import com.zfcom.cft.entity.User;
+import com.zfcom.cft.entity.po.User;
 import com.zfcom.cft.service.IndexService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -40,7 +40,8 @@ public class IndexController {
             map.put("res", "not exist");
             return map;
         }
-        request.getSession().setAttribute("user", resUser);
+        request.getSession().setAttribute("user",resUser);
+        request.getSession().setMaxInactiveInterval(60*120);//以秒为单位，即在没有活动120分钟后，session将失效
         map.put("res", "exist");
         return map;
     }

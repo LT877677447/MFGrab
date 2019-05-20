@@ -1,4 +1,4 @@
-package com.zfcom.cft.entity;
+package com.zfcom.cft.entity.po;
 
 import java.io.Serializable;
 import java.util.Date;

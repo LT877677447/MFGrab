@@ -1,7 +1,7 @@
 package com.zfcom.cft.service.impl;
 
 import com.zfcom.cft.dao.SummaryDao;
-import com.zfcom.cft.entity.Mofang;
+import com.zfcom.cft.entity.po.Mofang;
 import com.zfcom.cft.bo.MofangStatistical;
 import com.zfcom.cft.service.SummaryService;
 import com.zfcom.cft.utils.PageModel;
@@ -22,12 +22,6 @@ public class SummaryServiceImpl implements SummaryService {
 
     @Autowired
     private SummaryDao mofangDao;
-
-    @Transactional(readOnly = true)
-    @Override
-    public List<Mofang> getMofangByChannel(Integer no) {
-        return mofangDao.getMofangByChannel(no);
-    }
 
     @Transactional(readOnly = true)
     @Override

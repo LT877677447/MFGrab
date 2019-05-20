@@ -50,10 +50,13 @@
     </div>
   </div>
 
-  <iframe name="mainContent2" src="<c:url value="/Summary/List?channel=464"/>" width="85%" height="100%">
 
-  </iframe>
+    <iframe name="mainContent2" src="<c:url value="/Summary/List?channel=464"/>" width="85%" height="100%">
+
+    </iframe>
+
 </div>
+
 
 <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 

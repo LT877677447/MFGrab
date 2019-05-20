@@ -1,6 +1,6 @@
 package com.zfcom.cft.dao;
 
-import com.zfcom.cft.entity.User;
+import com.zfcom.cft.entity.po.User;
 import com.zfcom.cft.utils.Constants;
 import org.apache.ibatis.annotations.Select;
 

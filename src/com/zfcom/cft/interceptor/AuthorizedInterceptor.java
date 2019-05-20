@@ -1,6 +1,6 @@
 package com.zfcom.cft.interceptor;
 
-import com.zfcom.cft.entity.User;
+import com.zfcom.cft.entity.po.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthorizedInterceptor implements HandlerInterceptor {
     private static final Log logger = LogFactory.getLog(AuthorizedInterceptor.class);
-    private static final String[] IGNORE_URI = {"/index/login","/welcome.jsp"};
+    private static final String[] IGNORE_URI = {"/index/login", "/welcome.jsp"};
 
     /**
      * 该方法需要preHandle方法的返回值为true时才会执行。
@@ -70,4 +70,5 @@ public class AuthorizedInterceptor implements HandlerInterceptor {
         }
         return flag;
     }
+
 }

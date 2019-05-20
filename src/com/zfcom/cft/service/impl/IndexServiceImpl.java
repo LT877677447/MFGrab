@@ -1,7 +1,7 @@
 package com.zfcom.cft.service.impl;
 
 import com.zfcom.cft.dao.UserDao;
-import com.zfcom.cft.entity.User;
+import com.zfcom.cft.entity.po.User;
 import com.zfcom.cft.service.IndexService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
